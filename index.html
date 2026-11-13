@@ -218,7 +218,7 @@ figcaption small{color:var(--muted);font-size:14px}
 footer{padding:28px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:14px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 /* ===== motion & interactivity ===== */
-body{position:relative;overflow-x:hidden}
+body{position:relative;overflow-x:clip}
 .progress{position:fixed;top:0;left:0;height:3px;width:100%;background:var(--lime);transform-origin:0 50%;transform:scaleX(0);z-index:100}
 .nav{position:sticky;top:0;z-index:60;margin:0 -24px;padding:22px 24px;transition:padding .35s ease,background .35s ease,border-color .35s ease;border-bottom:1px solid transparent}
 .nav.scrolled{padding:14px 24px;background:rgba(14,17,22,.72);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);border-bottom-color:var(--line)}
@@ -327,13 +327,53 @@ figure:focus-visible{outline:3px solid var(--lime);outline-offset:6px;border-rad
   .reveal.pre{transform:none;opacity:1}
   .cursor-dot{display:none}
 }
+
+/* ===== mobile ===== */
+.menu-btn{display:none}
+@media (max-width:720px){
+.nav{flex-wrap:nowrap}
+.menu-btn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line);background:var(--panel);color:var(--text);cursor:pointer}
+.menu-btn span{position:relative;width:18px;height:2px;background:currentColor;transition:background .2s}
+.menu-btn span::before,.menu-btn span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:currentColor;transition:transform .3s}
+.menu-btn span::before{top:-6px}
+.menu-btn span::after{top:6px}
+.nav.open .menu-btn span{background:transparent}
+.nav.open .menu-btn span::before{transform:translateY(6px) rotate(45deg)}
+.nav.open .menu-btn span::after{transform:translateY(-6px) rotate(-45deg)}
+.nav.open{background:rgba(14,17,22,.97);border-bottom-color:var(--line)}
+.nav nav{position:absolute;left:0;right:0;top:100%;background:rgba(14,17,22,.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line);padding:4px 24px 20px;transform:translateY(-8px);opacity:0;visibility:hidden;transition:transform .3s,opacity .3s,visibility .3s}
+.nav.open nav{transform:none;opacity:1;visibility:visible}
+.nav ul{flex-direction:column;gap:0}
+.nav ul a{display:block;padding:14px 0;font-size:20px;font-family:var(--display);color:var(--text);border-bottom:1px solid var(--line)}
+.nav ul li:last-child a{border-bottom:0}
+.nav ul a::after{display:none}
+.hero{padding:28px 0 32px;gap:20px}
+.hero h1{font-size:44px;letter-spacing:-1.5px}
+.hero p{font-size:17px}
+.ctas .btn{flex:1 1 auto;justify-content:center}
+section{padding:56px 0}
+.head{margin-bottom:28px}
+.filters{flex-wrap:nowrap;overflow-x:auto;margin:-8px -24px 24px;padding:0 24px 4px;scrollbar-width:none}
+.filters::-webkit-scrollbar{display:none}
+.filters button{flex:none}
+.deal{padding:28px}
+.facts div{padding:18px 20px}
+.faq summary{font-size:17px;padding:18px 20px}
+.faq .ans{padding:0 20px 18px}
+.marquee span{font-size:18px}
+.glow{width:360px;height:360px;right:-180px;top:-120px}
+.glow.two{display:none}
+.lb-ctrl button{width:44px;height:44px}
+.contact h2{font-size:40px}
+footer{flex-direction:column}
+}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header class="nav">
     <a class="logo" href="#top" id="top">Shiok <span>Sites</span></a>
-    <nav aria-label="Main">
+    <nav aria-label="Main" id="mainnav">
       <ul>
         <li><a href="#work">Work</a></li>
         <li><a href="#services">Services</a></li>
@@ -342,6 +382,7 @@ figure:focus-visible{outline:3px solid var(--lime);outline-offset:6px;border-rad
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
+  <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mainnav"><span></span></button>
   </header>
 
   <div class="hero">
@@ -585,6 +626,13 @@ figure:focus-visible{outline:3px solid var(--lime);outline-offset:6px;border-rad
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fine = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
   var nav = document.querySelector('.nav'), prog = document.getElementById('progress');
+
+  // mobile menu
+  var mbtn = document.querySelector('.menu-btn');
+  function setMenu(open){ nav.classList.toggle('open', open); mbtn.setAttribute('aria-expanded', String(open)); mbtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); }
+  mbtn.addEventListener('click', function(){ setMenu(!nav.classList.contains('open')); });
+  [].forEach.call(document.querySelectorAll('.nav ul a'), function(a){ a.addEventListener('click', function(){ setMenu(false); }); });
+  addEventListener('keydown', function(e){ if(e.key === 'Escape') setMenu(false); });
 
   // sticky nav + scroll progress
   function onScroll(){
