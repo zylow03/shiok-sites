@@ -663,6 +663,32 @@ figure:hover .view{color:var(--lime)}
 @media (max-width:720px){.vhint{display:none}.vtop{gap:10px}.vname strong{font-size:18px}}
 @media (prefers-reduced-motion: reduce){.vscreen > *{animation:none}}
 
+/* sharp styles: dental, realty, gym */
+.t-dental *,.t-realty *,.t-gym *{border-radius:0 !important}
+.t-dental .mbtn,.t-dental .ibtn,.t-dental .isvc em,.t-dental .islots span{text-transform:uppercase;letter-spacing:.18cqw;font-size:1.25cqw}
+.t-dental .ip h3,.t-dental h3{letter-spacing:-.25cqw}
+.t-dental .icard,.t-dental .isvc,.t-dental .iformc,.t-dental .ifield div,.t-dental .islots span{border-color:#0F2A2A !important;border-width:.12cqw !important}
+.t-dental .pill{background:transparent !important;border:.12cqw solid #0F766E}
+.t-dental .book{border:.12cqw solid #0F2A2A !important;background:#fff !important}
+.t-dental .inav{border-bottom:.12cqw solid #0F2A2A}
+.t-dental .ifoot{border-top:.12cqw solid #0F2A2A}
+.t-realty .mbtn,.t-realty .ibtn,.t-realty .search > span,.t-realty .iagent em,.t-realty .tabs span{text-transform:uppercase;letter-spacing:.25cqw;font-size:1.2cqw}
+.t-realty .icard,.t-realty .iformc{border:.12cqw solid #0F1E3D !important}
+.t-realty .search{background:#F7F3EA !important;color:#0F1E3D;border:0 !important;backdrop-filter:none !important}
+.t-realty .search div{color:#5B6478 !important;border-right-color:#0F1E3D !important}
+.t-realty .search div b{color:#0F1E3D !important}
+.t-realty .itabs .on{background:#0F1E3D;border-color:#0F1E3D}
+.t-realty .ifacts span{border-top:.2cqw solid #0F1E3D}
+.t-realty .igal{gap:.6cqw}
+.t-realty .inav{border-bottom:.12cqw solid #0F1E3D}
+.t-gym .mbtn,.t-gym .ibtn,.t-gym .iplan em{text-transform:uppercase;letter-spacing:.2cqw}
+.t-gym .sched{border:.15cqw solid #FF5A1F !important;background:#0B0B0B !important;backdrop-filter:none !important}
+.t-gym .iplan{border:.15cqw solid #262626}
+.t-gym .iplan.hot{border:.3cqw solid #FF5A1F;box-shadow:none}
+.t-gym .itt{border:.15cqw solid #FF5A1F}
+.igal{grid-template-rows:repeat(2,minmax(0,1fr))}
+.igal img{min-height:0;min-width:0}
+
 /* viewer + featured card on phones */
 .feat-cap .pchips{flex-direction:row;flex-wrap:wrap}
 @media (max-width:720px){
@@ -779,11 +805,11 @@ footer{flex-direction:column}
 </figure>
 <figure data-cat="health" data-site="dental">
 <div class="browser"><div class="bar"><b></b><b></b><b></b></div><div class="screen t-dental" data-preview></div></div>
-<figcaption><div><strong>Brightsmile Dental</strong><small>Clinic · clean &amp; trustworthy</small></div><span class="view">3 pages <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span></figcaption>
+<figcaption><div><strong>Brightsmile Dental</strong><small>Clinic · crisp &amp; clinical</small></div><span class="view">3 pages <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span></figcaption>
 </figure>
 <figure data-cat="health" data-site="gym">
 <div class="browser"><div class="bar"><b></b><b></b><b></b></div><div class="screen t-gym" data-preview></div></div>
-<figcaption><div><strong>Forge Fitness</strong><small>Gym · bold &amp; energetic</small></div><span class="view">3 pages <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span></figcaption>
+<figcaption><div><strong>Forge Fitness</strong><small>Gym · bold &amp; hard-edged</small></div><span class="view">3 pages <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span></figcaption>
 </figure>
 <figure data-cat="food" data-site="florist">
 <div class="browser"><div class="bar"><b></b><b></b><b></b></div><div class="screen t-florist" data-preview></div></div>
@@ -791,7 +817,7 @@ footer{flex-direction:column}
 </figure>
 <figure data-cat="services" data-site="realty">
 <div class="browser"><div class="bar"><b></b><b></b><b></b></div><div class="screen t-realty" data-preview></div></div>
-<figcaption><div><strong>Harbour Homes</strong><small>Property · premium &amp; polished</small></div><span class="view">3 pages <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span></figcaption>
+<figcaption><div><strong>Harbour Homes</strong><small>Property · sharp &amp; editorial</small></div><span class="view">3 pages <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span></figcaption>
 </figure>
 <figure data-cat="services" data-site="tuition">
 <div class="browser"><div class="bar"><b></b><b></b><b></b></div><div class="screen t-tuition" data-preview></div></div>
